@@ -1,9 +1,6 @@
-const log = require('rfr')('lib/logging')(__filename);
-
 function wrap(res, fn) {
     return function(...args) {
         if (res.timedout) {
-            log.info({res: args, fjodor: args}, fn.name);
             return res;
         } else {
             return fn.apply(res, args);
@@ -17,8 +14,7 @@ export default (timeoutValue) => {
         res.setTimeout(timeoutValue);
         res.on('timeout', () => {
             res.timedout = true;
-            if (true || !res.headersSent) {
-                log.info({req}, 'Request Timeout');
+            if (!res.headersSent) {
                 res.statusCode = 408;
                 res.type('txt');
                 send.apply(res, ['Request Timeout']);
