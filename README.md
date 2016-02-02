@@ -18,7 +18,7 @@ app.use(timeout(30000)); //timeout in milliseconds
 
 Sets a timeout on the res object (see https://nodejs.org/api/http.html#http_class_http_serverresponse).
 
-On timeout reply 408.
+On timeout reply 503.
 ```
 const {send, sendStatus, status} = res;
   res.setTimeout(timeoutValue);
@@ -26,7 +26,7 @@ const {send, sendStatus, status} = res;
     res.timedout = true;
     if (!res.headersSent) {
       console.log({req, message: 'Request Timeout'});
-      res.statusCode = 408;
+      res.statusCode = 503;
       res.type('txt');
       send.apply(res, ['Request Timeout']);
     }
