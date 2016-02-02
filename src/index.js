@@ -15,7 +15,7 @@ export default (timeoutValue) => {
         res.on('timeout', () => {
             res.timedout = true;
             if (!res.headersSent) {
-                res.statusCode = 408;
+                res.statusCode = 503;
                 res.type('txt');
                 send.apply(res, ['Request Timeout']);
             }
