@@ -1,2 +1,3 @@
 # .gitignore - the files to not push via git
-lib
+/lib/
+/.idea/
