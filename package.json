@@ -4,7 +4,7 @@
   "description": "Express middleware for handling timeouts for slow requests",
   "main": "lib/index.js",
   "scripts": {
-    "compile": "babel -d lib/ src/",
+    "compile": "rm -rf lib; babel -d lib/ src/",
     "prepublish": "npm run compile",
     "test": "test"
   },
