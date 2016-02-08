@@ -8,10 +8,7 @@
     "prepublish": "npm run compile",
     "test": "test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fjodorekstrom/timeout-middleware.git"
-  },
+  "repository": "fjodorekstrom/timeout-middleware",
   "keywords": [
     "node",
     "express",
