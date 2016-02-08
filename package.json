@@ -23,6 +23,7 @@
   "homepage": "https://github.com/fjodorekstrom/timeout-middleware#readme",
   "devDependencies": {
     "babel-cli": "^6.4.5",
+    "babel-plugin-add-module-exports": "^0.1.2",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13"
   },
@@ -30,6 +31,9 @@
     "presets": [
       "es2015",
       "stage-0"
+    ],
+    "plugins": [
+      "add-module-exports"
     ]
   }
 }
