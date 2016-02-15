@@ -8,7 +8,7 @@ After `writeHead`, the headers are baked in and you can only call `res.write(dat
 
 Because of the way middleware processing works, once a module passes the request to the next middleware, it can no longer stop the flow, so we need to check if the request has timed out before we can continue to act on the request.
 
-The express module for timeout `connect-timeout` does this with a middleware that checks for `res.timedout`. 
+The express module for request timeout `connect-timeout` does this with a middleware that checks for `req.timedout`. 
 Which would be used (as top-level middleware) like this:
 ```
 var express = require('express');
@@ -33,7 +33,8 @@ app.listen(3000);
 ```
 Above codesnippet is copied from: https://github.com/expressjs/timeout  
 
-To avoid this, we intercept the usage of `res.status`, `res.sendStatus` and `res.send` with a wrapper that checks for the `res.timedout` bool that we put on the `res` object.  
+Since we want to time out the response from the server and try to keep us DRY we tried the following:  
+We intercept the usage of `res.status`, `res.sendStatus` and `res.send` with a wrapper that checks for the `res.timedout` bool that we put on the `res` object.  
 If `res.timedout` is `true` we return `res`.  
 Else we simply return the res function that was called with its arguments:  
 ```
