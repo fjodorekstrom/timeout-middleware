@@ -1,6 +1,6 @@
 {
   "name": "timeout-middleware",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "Express middleware for handling timeouts for slow requests",
   "main": "lib/index.js",
   "scripts": {
