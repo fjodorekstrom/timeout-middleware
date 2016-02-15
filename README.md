@@ -1,5 +1,5 @@
 #timeout-middleware#
-Express middleware that intercepts the `res.status`, `res.sendStauts` and `res.send` functions and checks for whether the response has timed out or not.
+Express middleware that intercepts the `res.status`, `res.sendStatus` and `res.send` functions and checks for whether the response has timed out or not.
 
 ##Why
 The res object in Express is a subclass of Node.js's `http.ServerResponse`.
