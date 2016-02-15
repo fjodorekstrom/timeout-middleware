@@ -33,7 +33,7 @@ app.listen(3000);
 ```
 Above codesnippet is copied from: https://github.com/expressjs/timeout  
 
-Since we want to time out the response from the server and try to keep us DRY we tried the following:  
+Since we want to set a timeout on the response and try to keep ourselves DRY:  
 We intercept the usage of `res.status`, `res.sendStatus` and `res.send` with a wrapper that checks for the `res.timedout` bool that we put on the `res` object.  
 If `res.timedout` is `true` we return `res`.  
 Else we simply return the res function that was called with its arguments:  
