@@ -73,7 +73,7 @@ export default (timeoutValue) => {
 };
 ```
 
-First we destructure the `send`, `sendStatus` and `status` functions from `res`.
+First we use destructuring to extract the `send`, `sendStatus` and `status` functions from `res`.
 Then we set a timeout on the res object (see https://nodejs.org/api/http.html#http_class_http_serverresponse).
 
 On timeout we set a `boolean` attribute called `res.timedout` to true.
