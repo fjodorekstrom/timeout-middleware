@@ -20,6 +20,9 @@ export default (timeoutValue) => {
                 send.apply(res, ['Request Timeout']);
             }
         });
+        res.on('error', error => {
+           console.log(error);
+        });
         res.send = wrap(res, send);
         res.sendStatus = wrap(res, sendStatus);
         res.status = wrap(res, status);
