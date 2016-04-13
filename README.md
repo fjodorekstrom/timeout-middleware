@@ -65,6 +65,9 @@ export default (timeoutValue) => {
           send.apply(res, ['Request Timeout']);
         }
       });
+      res.on('error'), error => {
+        console.log(error);
+      });
       res.send = wrap(res, send);
       res.sendStatus = wrap(res, sendStatus);
       res.status = wrap(res, status);
@@ -78,6 +81,8 @@ Then we set a timeout on the res object (see https://nodejs.org/api/http.html#ht
 
 On timeout we set a `boolean` attribute called `res.timedout` to true.
 Then we check for the `res.headersSent` and if it return `false` we set the `res.statusCode` to 503, `res.type` to `'txt'` and applies the `[Request Timeout]` to `send`.
+
+On error we simply log the error to the console. This is needed since the request object is an EventEmitter and if you don't have a listener for the error event, an error will be thrown, which could crash your program. 
 
 Outside of the `timeout` listener we let the `res.send` use the wrapper function to intercept any timeouts for that function. We do the same with `res.sendStatus` and `res.status`.
 
